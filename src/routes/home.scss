@@ -6,20 +6,24 @@ body {
 }
 
 .logo {
-  // height: 300px;
+  height: 50vmax;
   width: 50vmax;
   background-image: url("https://raw.githubusercontent.com/DaniBoie/web-mag/main/src/assets/Soli%20Logo.png");
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
-  flex-grow: 20;
-  animation: textMove 5s infinite alternate;
+  // flex-grow: 20;
+  animation: textMove 10s infinite alternate;
 }
 
 .text {
   margin-bottom: 20px;
-  flex-grow: 1;
+  // flex-grow: 1;
     // animation: textMove 5s infinite alternate;
+}
+
+.text:hover {
+  color: rgba(0, 0, 0, 0.3);
 }
 
 @keyframes gradient {
@@ -66,9 +70,15 @@ body {
     width: 80vmin;
     height: 80vmin;
   }
+}
+
+@media screen and (max-width: 750px) {
+
+
+
   .logo {
-    // width: 100vw;
-    // background-size: cover;
+    height: 30vmax;
+    width: 30vmax;
   }
 
 }
@@ -83,6 +93,12 @@ body {
     inset 100px 100px 0 0px #fa709a,
     inset 200px 200px 0 0px #784ba8,
     inset 300px 300px 0 0px #2b86c5;
+
+  
+}
+
+.blob:hover .text {
+  color: rgba(0, 0, 0, 0.3);
 }
 
 @-webkit-keyframes move {
@@ -114,10 +130,8 @@ body {
     transform: translateY(0px) rotate(-1deg);
     
   }
-        50% {
-          transform: translateY(40px) rotate(0deg);
-        }
+
   100% {
-    transform: translateY(20px) rotate(1deg);
+    transform: translateY(20px) rotate(0deg);
   }
 }
