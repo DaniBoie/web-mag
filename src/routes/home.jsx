@@ -1,4 +1,4 @@
-import './contact.scss'
+import './home.scss'
 
 export default function Home() {
 
