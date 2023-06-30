@@ -7,6 +7,7 @@ export default function ErrorPage() {
   return (
     <div class="coming-soon">
       <b>COMING SOON</b>
+      <div class="blob"><></></div>
     </div>
   );
 }
