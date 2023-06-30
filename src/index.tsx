@@ -16,10 +16,10 @@ const router = createBrowserRouter([
     element: <Home />,
     // errorElement: <ErrorPage />,
   },
-  {
-    path: 'portal',
-  element: <Test />
-  }
+  // {
+  //   path: 'portal',
+  // element: <Test />
+  // }
 ])
 
 
