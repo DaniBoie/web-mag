@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/web-mag/static/css/main.d809bd5a.css",
+    "main.js": "/web-mag/static/js/main.1dba0231.js",
+    "static/js/787.a1420bf5.chunk.js": "/web-mag/static/js/787.a1420bf5.chunk.js",
+    "index.html": "/web-mag/index.html",
+    "main.d809bd5a.css.map": "/web-mag/static/css/main.d809bd5a.css.map",
+    "main.1dba0231.js.map": "/web-mag/static/js/main.1dba0231.js.map",
+    "787.a1420bf5.chunk.js.map": "/web-mag/static/js/787.a1420bf5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d809bd5a.css",
+    "static/js/main.1dba0231.js"
+  ]
+}
