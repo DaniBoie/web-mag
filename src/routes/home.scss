@@ -12,15 +12,12 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  // flex-grow: 20;
   animation: textMove 10s infinite alternate;
 }
 
 .text {
   margin-bottom: 20px;
   justify-self: flex-end;
-  // flex-grow: 1;
-    // animation: textMove 5s infinite alternate;
 }
 
 // .text:hover {

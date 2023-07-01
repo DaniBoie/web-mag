@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createHashRouter,RouterProvider } from "react-router-dom"
-import Root from './routes/root';
 import ErrorPage from './pages/error-page';
 import Home from './routes/home';
 import Test from './routes/test';
@@ -18,7 +16,7 @@ const router = createHashRouter([
   },
   {
     path: 'portal',
-  element: <Test />
+    element: <Test />
   }
 ])
 
@@ -29,7 +27,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
     <RouterProvider router={router} />
   </React.StrictMode>
 );
