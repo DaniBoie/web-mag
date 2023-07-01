@@ -3,23 +3,23 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createBrowserRouter,RouterProvider } from "react-router-dom"
+import { createHashRouter,RouterProvider } from "react-router-dom"
 import Root from './routes/root';
 import ErrorPage from './pages/error-page';
 import Home from './routes/home';
 import Test from './routes/test';
 
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <Home />,
     errorElement: <ErrorPage />,
   },
-  // {
-  //   path: 'portal',
-  // element: <Test />
-  // }
+  {
+    path: 'portal',
+  element: <Test />
+  }
 ])
 
 
