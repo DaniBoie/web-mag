@@ -24,7 +24,7 @@ export default function Game() {
   document.addEventListener("keydown", keyDownHandler, false);
   document.addEventListener("keyup", keyUpHandler, false);
 
-  function keyDownHandler(e) {
+  function keyDownHandler(e: any) {
     if (e.key === "Right" || e.key === "ArrowRight") {
       rightPressed.current = true;
     } else if (e.key === "Left" || e.key === "ArrowLeft") {
@@ -32,7 +32,7 @@ export default function Game() {
     }
   }
 
-  function keyUpHandler(e) {
+  function keyUpHandler(e: any) {
     if (e.key === "Right" || e.key === "ArrowRight") {
       rightPressed.current = false;
     } else if (e.key === "Left" || e.key === "ArrowLeft") {
@@ -40,11 +40,11 @@ export default function Game() {
     }
   }
 
-  const draw = useCallback((pen, frameCount) => {
-    pen.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+  const draw = useCallback((pen: any, frameCount: number) => {
+    pen.clearRect(0, 0, (canvasRef.current as HTMLCanvasElement | null)!.width, (canvasRef.current as HTMLCanvasElement | null)!.height);
     // Draw paddle
     pen.beginPath()
-    pen.rect(paddleX.current, canvasRef.current.height - paddleHeight, paddleWidth, paddleHeight);
+    pen.rect(paddleX.current, (canvasRef.current as HTMLCanvasElement | null)!.height - paddleHeight, paddleWidth, paddleHeight);
     pen.fillStyle = "rgba(255, 255, 255, .3)";
     pen.fill();
     pen.closePath();
@@ -64,11 +64,11 @@ export default function Game() {
     pen.closePath();
 
     // Ball Wall Collision
-    if (ballX.current + vectorX.current < ballRadius || ballX.current + vectorX.current > canvasRef.current.width - ballRadius) {
+    if (ballX.current + vectorX.current < ballRadius || ballX.current + vectorX.current > (canvasRef.current as HTMLCanvasElement | null)!.width - ballRadius) {
       vectorX.current *= -1;
     }
 
-    if (ballY.current + vectorY.current < ballRadius || ballY.current + vectorY.current > canvasRef.current.height - ballRadius) {
+    if (ballY.current + vectorY.current < ballRadius || ballY.current + vectorY.current > (canvasRef.current as HTMLCanvasElement | null)!.height - ballRadius) {
       vectorY.current *= -1;
     }
 
@@ -81,16 +81,16 @@ export default function Game() {
 
   useEffect(() => {
     // const canvas = document.getElementById("canvas");
-    const canvas = canvasRef.current;
-    const pen = canvas.getContext("2d");
+    const canvas = canvasRef.current as HTMLCanvasElement | null;
+    const pen = canvas?.getContext("2d");
 
-    ballX.current = canvas.width / 2;
-    ballY.current = canvas.height - 30;
+    ballX.current = canvas!.width / 2;
+    ballY.current = canvas!.height - 30;
 
-    paddleX.current = (canvas.width - paddleWidth) / 2;
+    paddleX.current = (canvas!.width - paddleWidth) / 2;
 
     let frameCount = 0;
-    let animationFrameId;
+    let animationFrameId: number;
 
     const render = () => {
       frameCount++;
