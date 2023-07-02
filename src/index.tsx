@@ -5,7 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import { createHashRouter,RouterProvider } from "react-router-dom"
 import ErrorPage from './pages/error-page';
 import Home from './routes/home';
-import Test from './routes/test';
+import Game from './routes/game';
+// import { Canvas } from './routes/breakoutCanvas';
 
 
 const router = createHashRouter([
@@ -15,8 +16,8 @@ const router = createHashRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: 'portal',
-    element: <Test />
+    path: 'game',
+    element: <Game />
   }
 ])
 
