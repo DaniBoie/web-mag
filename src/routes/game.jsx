@@ -8,17 +8,73 @@ export default function Game() {
   let ballX = useRef(0);
   let ballY = useRef(0);
 
-  const draw = useCallback((pen, frameCount) => {
-    pen.clearRect(0, 0, pen.canvas.width, pen.canvas.height);
+  let vectorX = useRef(.2);
+  let vectorY = useRef(.2);
 
-    pen.beginPath();
-    pen.arc(ballX.current, ballY.current, 10, 0, Math.PI * 2);
-    pen.fillStyle = "#0095DD";
+  const ballRadius = 10;
+
+  const paddleHeight = 10;
+  const paddleWidth = 75;
+
+  let paddleX = useRef(0);
+
+  let leftPressed = useRef(false);
+  let rightPressed = useRef(false);
+
+  document.addEventListener("keydown", keyDownHandler, false);
+  document.addEventListener("keyup", keyUpHandler, false);
+
+  function keyDownHandler(e) {
+    if (e.key === "Right" || e.key === "ArrowRight") {
+      rightPressed.current = true;
+    } else if (e.key === "Left" || e.key === "ArrowLeft") {
+      leftPressed.current = true;
+    }
+  }
+
+  function keyUpHandler(e) {
+    if (e.key === "Right" || e.key === "ArrowRight") {
+      rightPressed.current = false;
+    } else if (e.key === "Left" || e.key === "ArrowLeft") {
+      leftPressed.current = false;
+    }
+  }
+
+  const draw = useCallback((pen, frameCount) => {
+    pen.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    // Draw paddle
+    pen.beginPath()
+    pen.rect(paddleX.current, canvasRef.current.height - paddleHeight, paddleWidth, paddleHeight);
+    pen.fillStyle = "rgba(255, 255, 255, .3)";
     pen.fill();
     pen.closePath();
 
-    ballX.current += .2;
-    ballY.current -= .2;
+    if (rightPressed.current) {
+      paddleX.current += .5;
+    } else if (leftPressed.current) {
+      paddleX.current -= .5;
+    }
+
+
+    // Draw Ball
+    pen.beginPath();
+    pen.arc(ballX.current, ballY.current, ballRadius, 0, Math.PI * 2);
+    pen.fillStyle = "rgba(255, 255, 255, .3)";
+    pen.fill();
+    pen.closePath();
+
+    // Ball Wall Collision
+    if (ballX.current + vectorX.current < ballRadius || ballX.current + vectorX.current > canvasRef.current.width - ballRadius) {
+      vectorX.current *= -1;
+    }
+
+    if (ballY.current + vectorY.current < ballRadius || ballY.current + vectorY.current > canvasRef.current.height - ballRadius) {
+      vectorY.current *= -1;
+    }
+
+
+    ballX.current += vectorX.current;
+    ballY.current += vectorY.current;
 
   }, []);
 
@@ -30,6 +86,8 @@ export default function Game() {
 
     ballX.current = canvas.width / 2;
     ballY.current = canvas.height - 30;
+
+    paddleX.current = (canvas.width - paddleWidth) / 2;
 
     let frameCount = 0;
     let animationFrameId;
