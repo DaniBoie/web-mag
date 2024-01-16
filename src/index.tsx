@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { createHashRouter,RouterProvider } from "react-router-dom"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import ErrorPage from './pages/error-page';
 import Home from './routes/home';
 import Game from './routes/game';
 // import { Canvas } from './routes/breakoutCanvas';
 
-
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,

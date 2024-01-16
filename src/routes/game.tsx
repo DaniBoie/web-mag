@@ -1,4 +1,5 @@
 import './game.scss';
+
 import { useCallback, useEffect, useRef } from "react";
 
 export default function Game() {
