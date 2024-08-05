@@ -12,7 +12,6 @@ export default function Tone() {
             <h1 style={{color: "blue"}}>
                 Tone JS
             </h1>
-
         </>
     )
     // HTML HERE
