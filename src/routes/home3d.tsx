@@ -1,49 +1,24 @@
 import { Canvas, useThree } from '@react-three/fiber'
-import { MarchingCube, MarchingCubes, MarchingPlane, PresentationControls, Sphere, Text3D, Box } from '@react-three/drei'
-import { Color } from 'three'
+import { MarchingCube, MarchingCubes, MarchingPlane, PresentationControls, Sphere, Text3D, Box, MeshDistortMaterial, MeshRefractionMaterial, AccumulativeShadows, RandomizedLight, MeshTransmissionMaterial } from '@react-three/drei'
+import { Color, CubeTexture } from 'three'
 import { useEffect, useState } from 'react';
 
 export default function Home3D() {
 
-  const [size, setSize] = useState({size: 1, type: 'grow'})
+  // Create a simple cube texture with a solid color
+  const color = new Color(0xffffff); // white color
+  const size = 1; // size of the texture
+  const data = new Uint8Array([255, 255, 255, 255]); // RGBA values for white color
 
-  // Create a function that fires every 2 seconds to set the size of the sphere to a random value
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // Slowly increase the size of the sphere until it reaches 2 then slowly decrease it back to 1
-      setSize((prev) => {
-        switch (prev.type) {
-          case "grow":
-            if (prev.size < 2) {
-              return {size: prev.size + 0.01, type: 'grow'}
-            } else {
-              return {size: prev.size, type: 'shrink'}
-            }
-            break;
-
-          case "shrink":
-            if (prev.size > 1) {
-              return {size: prev.size - 0.01, type: 'shrink'}
-            } else {
-              return {size: prev.size, type: 'grow'}
-            }
-            break;
-        
-          default:
-            return {size: prev.size, type: prev.type}
-            break;
-        }
-      })
-    }, 25)
-    // Clear the interval when the component is removed
-    return () => clearInterval(interval)
-  }, [])
+  const texture = new CubeTexture();
+  texture.images = [data, data, data, data, data, data];
+  texture.needsUpdate = true;
 
   return (
     <div id="canvas-container">
       <Canvas>
-        <ambientLight intensity={0.1} />
-        <directionalLight color="white" position={[0, 0, 5]} />
+        <ambientLight intensity={1} />
+        <directionalLight color="white" position={[2, -2, 5]} intensity={1}/>
         <PresentationControls
           enabled={true} // the controls can be disabled by setting this to false
           global={false} // Spin globally or by dragging the model
@@ -58,10 +33,9 @@ export default function Home3D() {
           // domElement={events.connected} // The DOM element events for this controller will attach to
         >
           <mesh>
-                <Sphere args={[1, 32, 32]} position={[0, 0, 0]} scale={size.size} >
-                  <meshStandardMaterial wireframe color={new Color("#23a6d5")} />
-                </Sphere>
-            {/* <Text3D>hello</Text3D> */}
+            <Sphere args={[1, 32, 32]} position={[0, 0, 0]} scale={1.5} >
+              <MeshDistortMaterial transparent color={new Color("#ffffff")} speed={1.8} distort={0.5} opacity={0.35}/>
+            </Sphere>
           </mesh>
         </PresentationControls>
       </Canvas>
