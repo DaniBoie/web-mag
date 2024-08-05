@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import ErrorPage from './pages/error-page';
 import Home from './routes/home';
 import Game from './routes/game';
-import Tone from './routes/tone';
+import Toner from './routes/tone';
 // import { Canvas } from './routes/breakoutCanvas';
 
 const router = createBrowserRouter([
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'tone',
-    element: <Tone />
+    element: <Toner />
   }
 ])
 
