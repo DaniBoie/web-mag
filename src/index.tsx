@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import ErrorPage from './pages/error-page';
 import Home from './routes/home';
 import Game from './routes/game';
-// import { Canvas } from './routes/breakoutCanvas';
+import { Landing } from './routes/Landing';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +17,12 @@ const router = createBrowserRouter([
   {
     path: 'game',
     element: <Game />
+  },
+  {
+    path: '/test',
+    element: <Landing />
   }
+
 ])
 
 
