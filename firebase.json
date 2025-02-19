@@ -1,5 +1,7 @@
 {
   "hosting": {
+
+    "site": "soli-digital",
     "public": "build",
     "ignore": [
       "firebase.json",
@@ -11,6 +13,9 @@
         "source": "**",
         "destination": "/index.html"
       }
+    ],
+    "domains": [
+      "soli.digital"
     ]
   }
 }

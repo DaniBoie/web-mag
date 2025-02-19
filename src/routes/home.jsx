@@ -6,7 +6,7 @@ export default function Home() {
     <div class="coming-soon">
       <div class="logo"></div>
       <div class="blob"><></></div>
-      <b class="text" >COMING SOON</b>
+      <b class="text"></b>
     </div>
   );
 }
