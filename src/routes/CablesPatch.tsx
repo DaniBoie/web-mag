@@ -34,7 +34,7 @@ export default class CablesPatch extends Component<CablesPatchProps> {
   constructor(props: CablesPatchProps) {
     super(props);
     this.canvasId = props.canvasId || "glcanvas";
-    this.patchDir = props.patchDir || `${process.env.PUBLIC_URL}/patch`;
+    this.patchDir = props.patchDir || `${process.env.PUBLIC_URL}/patch/`;
     this.patchOptions = {
       prefixAssetPath: this.patchDir,
       jsPath: `${this.patchDir}/js/`,
