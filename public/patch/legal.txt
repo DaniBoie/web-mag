@@ -6,5 +6,5 @@ Additional code from contributors and libraries in this export are licenced as f
 
 Public Domain:
 
-- Photoshop math GLSL shaders by Romain Dura (https://mouaif.wordpress.com/2009/01/05/photoshop-math-with-glsl-shaders/)
 - GPU-Noise-Lib by Brian Sharpe (https://github.com/BrianSharpe/GPU-Noise-Lib)
+- Photoshop math GLSL shaders by Romain Dura (https://mouaif.wordpress.com/2009/01/05/photoshop-math-with-glsl-shaders/)
